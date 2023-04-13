@@ -1,12 +1,6 @@
-Android Large Screens Codelabs
-==============================
+Android large screen codelabs
+=============================
 
-This repository contains a set of Android Studio projects to accompany various
-Large Screens codelabs, which guide developers through best practices of
-supporting larger form factor devices.
+This repository contains Android sample apps that are used in large screen codelabs. The codelabs guide you through best practices of supporting large screen devices.
 
-Read below for a description of each project.
-
-* **[Folder1](Folder1)** (Compose/Kotlin) - Description1
-
-* **[Folder2](Folder2)** (Compose/Kotlin) - Description2
+Clone the repo or download and unarchive the zip file. The folders in the repo contain Android Studio projects that enable you to modify and build the sample apps. The codelabs provide instructions on how to work with the apps.
