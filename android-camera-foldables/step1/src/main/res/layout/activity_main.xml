@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:backgroundTint="@color/black"
-            android:src="@drawable/baseline_add_to_home_screen_24"/>
+            android:src="@drawable/baseline_camera_rear_24"/>
 
         <ImageButton
             android:id="@+id/capture"

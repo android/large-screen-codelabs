@@ -18,20 +18,15 @@ package com.google.codelab.android.camera.foldables.step2
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.window.area.WindowAreaSession
-import androidx.window.core.ExperimentalWindowApi
 import com.google.codelab.android.camera.foldables.step2.camera2.CameraViewFinderActor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@OptIn(ExperimentalWindowApi::class)
 @HiltViewModel
 class CameraViewModel @Inject constructor(private val actor: CameraViewFinderActor) : ViewModel() {
 
     var cameraId: String = "0"
-    var rearDisplaySession: WindowAreaSession? = null
-        private set
 
     fun sendSurfaceUpdate() = viewModelScope.launch {
         actor.sendSurfaceRequest(cameraId)
@@ -52,9 +47,5 @@ class CameraViewModel @Inject constructor(private val actor: CameraViewFinderAct
 
     fun toggleAspectRatio() {
         actor.toggleAspectRatio()
-    }
-
-    fun updateSession(newSession: WindowAreaSession? = null) {
-        rearDisplaySession = newSession
     }
 }

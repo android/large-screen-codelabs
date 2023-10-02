@@ -28,8 +28,6 @@ class CameraViewModel @Inject constructor(private val actor: CameraViewFinderAct
 
     var cameraId: String = "0"
 
-    /**Codelab: Add variables for rear display mode **/
-
     fun sendSurfaceUpdate() = viewModelScope.launch {
         actor.sendSurfaceRequest(cameraId)
     }
@@ -50,6 +48,4 @@ class CameraViewModel @Inject constructor(private val actor: CameraViewFinderAct
     fun toggleAspectRatio() {
         actor.toggleAspectRatio()
     }
-
-    /**Codelab: Add functions for rear display mode **/
 }
