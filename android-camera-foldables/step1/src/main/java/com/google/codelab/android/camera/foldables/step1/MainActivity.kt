@@ -59,9 +59,9 @@ class MainActivity : AppCompatActivity() {
         binding.toggle.setOnClickListener { viewModel.toggleCamera() }
         binding.capture.setOnClickListener { viewModel.capture() }
         binding.aspectRatio.setOnClickListener { viewModel.toggleAspectRatio() }
-        binding.rearDisplay.setOnClickListener { startRearDisplayMode() }
+        binding.rearDisplay.setOnClickListener { toggleRearDisplayMode() }
 
-        /**Codelab: initialize WindowInfoTracker**/
+        /**Codelab: initialize WindowAreaController*/
     }
 
     override fun onResume() {
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Codelab: add the code to manage rear display sessions **/
 
-    private fun startRearDisplayMode() {
+    private fun toggleRearDisplayMode() {
 
     }
 }
