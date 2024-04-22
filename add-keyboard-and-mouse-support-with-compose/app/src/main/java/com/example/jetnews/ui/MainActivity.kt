@@ -43,37 +43,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onProvideKeyboardShortcuts(
-        data: MutableList<KeyboardShortcutGroup>?,
-        menu: Menu?,
-        deviceId: Int
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && data != null) {
-            val shortcutGroup = KeyboardShortcutGroup(
-                "To read articles",
-                listOf(
-                    KeyboardShortcutInfo(
-                        "Scroll down", KeyEvent.KEYCODE_PAGE_DOWN,
-                        0
-                    ),
-                    KeyboardShortcutInfo(
-                        "Scroll down",
-                        KeyEvent.KEYCODE_SPACE,
-                        0
-                    ),
-                    KeyboardShortcutInfo(
-                        "Scroll up",
-                        KeyEvent.KEYCODE_PAGE_UP,
-                        0
-                    ),
-                    KeyboardShortcutInfo(
-                        "Scroll up",
-                        KeyEvent.KEYCODE_SPACE,
-                        KeyEvent.META_SHIFT_ON
-                    ),
-                )
-            )
-            data.add(shortcutGroup)
-        }
-    }
 }

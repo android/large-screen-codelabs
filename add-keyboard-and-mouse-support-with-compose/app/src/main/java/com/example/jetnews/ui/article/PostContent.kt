@@ -110,35 +110,9 @@ fun PostContent(
     focusRequester: FocusRequester = remember { FocusRequester() },
     header: (@Composable () -> Unit)? = null
 ) {
-
-    val interactionSource = remember { MutableInteractionSource() }
-
-    LaunchedEffect(post) {
-        focusRequester.requestFocus()
-    }
-
     LazyColumn(
         contentPadding = contentPadding,
-        modifier = modifier
-            .padding(horizontal = defaultSpacerSize)
-            .onKeyEvent {
-                if (it.type == KeyEventType.KeyDown && it.key == Key.Spacebar) {
-                    val relativeAmount = if (it.isShiftPressed) {
-                        -0.4f
-                    } else {
-                        0.4f
-                    }
-                    coroutineScope.launch {
-                        state.animateScrollBy(relativeAmount * state.layoutInfo.viewportSize.height)
-                    }
-                    true
-                } else {
-                    false
-                }
-            }
-            .focusRequester(focusRequester)
-            .indication(interactionSource, BorderIndication())
-            .focusable(interactionSource = interactionSource),
+        modifier = modifier.padding(horizontal = defaultSpacerSize),
         state = state,
     ) {
         if (header != null) {
