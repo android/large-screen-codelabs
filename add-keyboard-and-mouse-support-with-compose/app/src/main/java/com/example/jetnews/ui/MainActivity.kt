@@ -16,12 +16,7 @@
 
 package com.example.jetnews.ui
 
-import android.os.Build
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.KeyboardShortcutGroup
-import android.view.KeyboardShortcutInfo
-import android.view.Menu
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -42,5 +37,4 @@ class MainActivity : ComponentActivity() {
             JetnewsApp(appContainer, widthSizeClass)
         }
     }
-
 }
