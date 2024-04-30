@@ -18,7 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/black">
+    android:background="@color/black">
 
     <LinearLayout
         android:id="@+id/controls"
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/black">
+        android:background="@color/black">
 
         <ImageButton
             android:id="@+id/rear_display"
@@ -65,12 +65,20 @@
             android:src="@drawable/baseline_aspect_ratio_24" />
     </LinearLayout>
 
-    <androidx.camera.viewfinder.CameraViewfinder
-        android:id="@+id/view_finder"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/controls"
-        app:implementationMode="performance"
-        app:scaleType="fitCenter" />
+        android:background="@color/black">
+
+        <androidx.camera.viewfinder.CameraViewfinder
+            android:id="@+id/view_finder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:implementationMode="performance"
+            app:scaleType="fitCenter"
+            android:backgroundTint="@color/black"/>
+
+    </FrameLayout>
 
 </RelativeLayout>

@@ -1,5 +1,26 @@
-<vector android:height="40dp" android:tint="#FFFFFF"
-    android:viewportHeight="24" android:viewportWidth="24"
-    android:width="40dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@android:color/white" android:pathData="M10,20L5,20v2h5v2l3,-3 -3,-3v2zM14,20v2h5v-2h-5zM17,0L7,0C5.9,0 5,0.9 5,2v14c0,1.1 0.9,2 2,2h10c1.1,0 2,-0.9 2,-2L19,2c0,-1.1 -0.9,-2 -2,-2zM12,6c-1.11,0 -2,-0.9 -2,-2s0.89,-2 1.99,-2 2,0.9 2,2C14,5.1 13.1,6 12,6z"/>
+<!--
+     Copyright (C) 2023 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportHeight="960"
+    android:viewportWidth="960"
+    android:tint="#FFFFFF">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M660,320Q677,320 688.5,308.5Q700,297 700,280Q700,263 688.5,251.5Q677,240 660,240Q643,240 631.5,251.5Q620,263 620,280Q620,297 631.5,308.5Q643,320 660,320ZM520,760L800,760Q800,760 800,760Q800,760 800,760L800,200Q800,200 800,200Q800,200 800,200L520,200L520,760ZM160,840Q127,840 103.5,816.5Q80,793 80,760L80,520L248,520L184,584L240,640L400,480L240,320L184,376L248,440L80,440L80,200Q80,167 103.5,143.5Q127,120 160,120L800,120Q833,120 856.5,143.5Q880,167 880,200L880,760Q880,793 856.5,816.5Q833,840 800,840L160,840Z"/>
 </vector>
