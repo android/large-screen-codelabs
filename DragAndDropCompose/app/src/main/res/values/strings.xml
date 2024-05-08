@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DragAndDropCompose</string>
+    <string name="source_url">https://services.google.com/fh/files/misc/qq8.jpeg</string>
+    <string name="target_url">https://services.google.com/fh/files/misc/qq2.jpeg</string>
+</resources>
