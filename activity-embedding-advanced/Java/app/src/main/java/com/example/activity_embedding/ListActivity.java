@@ -17,8 +17,15 @@
 package com.example.activity_embedding;
 
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.window.embedding.SplitAttributes;
+import androidx.window.embedding.SplitController;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigationrail.NavigationRailView;
 
 /**
  * The list portion of a list-detail layout.
@@ -40,6 +47,32 @@ public class ListActivity extends AppCompatActivity {
 
         listRecyclerView.setAdapter(new ItemAdapter(itemList));
 
+        SplitController.getInstance(this).setSplitAttributesCalculator(params -> {
+            if (params.areDefaultConstraintsSatisfied()) {
+                // When default constraints are satisfied, use the navigation rail.
+                setWiderScreenNavigation(true);
+                return params.getDefaultSplitAttributes();
+            } else {
+                // Use the bottom navigation bar in other cases.
+                setWiderScreenNavigation(false);
+                // Expand containers if the device is in portrait or the width is less than 600 dp.
+                return new SplitAttributes.Builder()
+                        .setSplitType(SplitAttributes.SplitType.SPLIT_TYPE_EXPAND)
+                        .build();
+            }
+        });
+    }
+
+    private void setWiderScreenNavigation(boolean useNavRail) {
+        NavigationRailView navRail = findViewById(R.id.navigationRailView);
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        if (useNavRail) {
+            navRail.setVisibility(View.VISIBLE);
+            bottomNav.setVisibility(View.GONE);
+        } else {
+            navRail.setVisibility(View.GONE);
+            bottomNav.setVisibility(View.VISIBLE);
+        }
     }
 
 }

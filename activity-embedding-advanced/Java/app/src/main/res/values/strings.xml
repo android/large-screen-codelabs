@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2023 Google LLC
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,5 +15,9 @@
   -->
 
 <resources>
-  <string name="app_name">Activity Embedding</string>
+    <string name="app_name">Activity Embedding</string>
+    <string name="placeholder_text">Placeholder</string>
+    <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="settings">Settings</string>
 </resources>
