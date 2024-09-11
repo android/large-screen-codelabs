@@ -1,4 +1,4 @@
-# Activity Embedding
+# Advanced Activity Embedding
 
 The activity embedding sample app is the codebase of advanced activity
 embedding codelab.
