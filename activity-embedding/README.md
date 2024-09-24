@@ -1,4 +1,4 @@
-# Activity Embedding
+# Activity embedding
 
 The activity embedding sample app is the basis of the activity embedding 
 codelab.
