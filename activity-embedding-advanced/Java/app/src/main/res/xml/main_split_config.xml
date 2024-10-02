@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:window="http://schemas.android.com/apk/res-auto">
+
+    <!-- Define a split for the named activity pair. -->
+    <SplitPairRule
+        window:splitRatio="0.33"
+        window:splitMinWidthDp="840"
+        window:finishPrimaryWithSecondary="never"
+        window:finishSecondaryWithPrimary="always">
+        <SplitPairFilter
+            window:primaryActivityName=".ListActivity"
+            window:secondaryActivityName=".DetailActivity"/>
+    </SplitPairRule>
+
+    <!-- Automatically launch a placeholder for the detail activity. -->
+    <SplitPlaceholderRule
+        window:placeholderActivityName=".PlaceholderActivity"
+        window:splitRatio="0.33"
+        window:splitMinWidthDp="840"
+        window:finishPrimaryWithPlaceholder="always"
+        window:stickyPlaceholder="false">
+        <ActivityFilter
+            window:activityName=".ListActivity"/>
+    </SplitPlaceholderRule>
+
+    <!-- Activities that should never be in a split. -->
+    <ActivityRule
+        window:alwaysExpand="true">
+        <ActivityFilter
+            window:activityName=".SummaryActivity"/>
+    </ActivityRule>
+</resources>
