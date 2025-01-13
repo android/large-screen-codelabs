@@ -16,18 +16,19 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("org.jetbrains.kotlin.plugin.compose") version "$kotlin_version"
 }
 
 android {
     namespace 'com.example.stylus'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.example.stylus"
         minSdk 26
-        targetSdk 33
+        targetSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -46,13 +47,13 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_compiler_version
+        kotlinCompilerExtensionVersion kotlin_version
     }
     packagingOptions {
         resources {
@@ -63,9 +64,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+    implementation 'androidx.activity:activity-compose:1.9.3'
 
     implementation platform("androidx.compose:compose-bom:$compose_version")
     implementation "androidx.compose.ui:ui"
@@ -76,11 +77,11 @@ dependencies {
     // Integration with activities
     implementation 'androidx.activity:activity-compose'
 
-    implementation 'androidx.compose.material3:material3:1.0.1'
-    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4')
+    implementation 'androidx.compose.material3:material3:1.3.1'
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0')
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     androidTestImplementation platform("androidx.compose:compose-bom:$compose_version")
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
