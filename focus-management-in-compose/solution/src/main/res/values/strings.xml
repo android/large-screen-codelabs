@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Focus Management In Compose</string>
+    <string name="focus_target">Focus target</string>
+    <string name="focus_group">Focus group</string>
+    <string name="focus_traversal_order">Focus traversal order</string>
+    <string name="focus_request">Focus request</string>
+    <string name="feature_is_not_available">This feature is not available.</string>
+    <string name="first_card">1st card</string>
+    <string name="second_card">2nd card</string>
+    <string name="third_card">3rd card</string>
+    <string name="fourth_card">4th card</string>
+    <string name="fifth_card">5th card</string>
+    <string name="sixth_card">6th card</string>
+    <string name="first_item">1st item</string>
+    <string name="second_item">2nd item</string>
+    <string name="third_item">3rd item</string>
+    <string name="fourth_item">4th item</string>
+    <string name="fifth_item">5th item</string>
+    <string name="sixth_item">6th item</string>
+    <string name="toast_message">Card is clicked</string>
+</resources>
