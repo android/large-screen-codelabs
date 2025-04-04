@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FocusManagementInCompose"
-include(":baseline")
+include(":start")
 include(":solution")
