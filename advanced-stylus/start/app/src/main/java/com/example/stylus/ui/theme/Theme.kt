@@ -70,6 +70,7 @@ fun StylusTheme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
+            val window = (view.context as Activity).window
             (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
         }

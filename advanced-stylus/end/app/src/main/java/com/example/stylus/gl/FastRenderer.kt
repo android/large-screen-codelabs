@@ -20,6 +20,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.opengl.GLES20
 import android.opengl.Matrix
+import android.os.Build
 import android.view.MotionEvent
 import android.view.SurfaceView
 import android.view.View
@@ -62,6 +63,8 @@ class FastRenderer(
 
     override fun onDrawFrontBufferedLayer(
         eglManager: EGLManager,
+        width: Int,
+        height: Int,
         bufferInfo: BufferInfo,
         transform: FloatArray,
         param: Segment
@@ -86,8 +89,10 @@ class FastRenderer(
         obtainRenderer().drawLine(projection, listOf(param), Color.GRAY.toColor())
     }
 
-    override fun onDrawDoubleBufferedLayer(
+    override fun onDrawMultiBufferedLayer(
         eglManager: EGLManager,
+        width: Int,
+        height: Int,
         bufferInfo: BufferInfo,
         transform: FloatArray,
         params: Collection<Segment>
@@ -174,8 +179,18 @@ class FastRenderer(
                 }
             }
             MotionEvent.ACTION_UP -> {
-                frontBufferRenderer?.commit()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                    (event.flags and MotionEvent.FLAG_CANCELED) == MotionEvent.FLAG_CANCELED) {
+                    frontBufferRenderer?.cancel()
+                } else {
+                    frontBufferRenderer?.commit()
+                }
             }
+
+            MotionEvent.ACTION_CANCEL -> {
+                frontBufferRenderer?.cancel()
+            }
+
         }
         true
     }

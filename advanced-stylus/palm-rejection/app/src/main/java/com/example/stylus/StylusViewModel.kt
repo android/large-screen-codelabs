@@ -16,6 +16,7 @@
 package com.example.stylus
 
 import android.os.Build
+import android.util.Log
 import android.view.MotionEvent
 import androidx.compose.ui.graphics.Path
 import androidx.lifecycle.ViewModel
@@ -66,8 +67,7 @@ class StylusViewModel : ViewModel() {
             MotionEvent.ACTION_MOVE -> {
                 currentPath.add(DrawPoint(motionEvent.x, motionEvent.y, DrawPointType.LINE))
             }
-            MotionEvent.ACTION_POINTER_UP,
-            MotionEvent.ACTION_UP -> {
+            MotionEvent.ACTION_POINTER_UP -> {
                 val canceled = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
                         (motionEvent.flags and MotionEvent.FLAG_CANCELED) == MotionEvent.FLAG_CANCELED
 
@@ -76,6 +76,9 @@ class StylusViewModel : ViewModel() {
                 } else {
                     currentPath.add(DrawPoint(motionEvent.x, motionEvent.y, DrawPointType.LINE))
                 }
+            }
+            MotionEvent.ACTION_UP -> {
+                // end of current stroke
             }
             MotionEvent.ACTION_CANCEL -> {
                 // unwanted touch detected

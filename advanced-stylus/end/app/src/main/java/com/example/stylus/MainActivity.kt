@@ -30,6 +30,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -91,9 +92,9 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxWidth()
                                 .height(100.dp)
                         )
-                        Divider(
+                        HorizontalDivider(
                             thickness = 1.dp,
-                            color = Color.Black,
+                            color = Color.Black
                         )
                         DrawAreaLowLatency()
                     }
