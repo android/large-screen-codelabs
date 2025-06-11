@@ -16,13 +16,33 @@
 
 package com.example.focusmanagementincompose.ui
 
-import androidx.annotation.StringRes
+import androidx.navigation3.runtime.NavKey
 import com.example.focusmanagementincompose.R
+import kotlinx.serialization.Serializable
 
-enum class Tab(
-    @StringRes val title: Int,
-) {
-    FocusTarget(title = R.string.focus_target),
-    FocusTraversalOrder(title = R.string.focus_traversal_order),
-    FocusGroup(title = R.string.focus_group),
+sealed interface Tab : NavKey {
+    val title: Int
+
+    @Serializable
+    data object FocusTarget : Tab {
+        override val title = R.string.focus_target
+    }
+
+    @Serializable
+    data object FocusTraversalOrder : Tab {
+        override val title = R.string.focus_traversal_order
+    }
+
+    @Serializable
+    data object FocusGroup : Tab {
+        override val title = R.string.focus_group
+    }
+
+    companion object {
+        val entries = listOf(
+            FocusTarget,
+            FocusTraversalOrder,
+            FocusGroup,
+        )
+    }
 }
