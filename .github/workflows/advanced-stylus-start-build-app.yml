@@ -26,8 +26,8 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        working-directory: ./large-screen-codelabs/advanced-stylus/start
+        working-directory: ./advanced-stylus/start
 
       - name: Build app
-        working-directory: ./large-screen-codelabs/advanced-stylus/start
+        working-directory: ./advanced-stylus/start
         run: ./gradlew :app:assembleDebug
