@@ -26,8 +26,8 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        working-directory: ./large-screen-codelabs/add-keyboard-and-mouse-support-with-compose
+        working-directory: ./add-keyboard-and-mouse-support-with-compose
 
       - name: Build app
-        working-directory: ./large-screen-codelabs/add-keyboard-and-mouse-support-with-compose
+        working-directory: ./add-keyboard-and-mouse-support-with-compose
         run: ./gradlew :app:assembleDebug

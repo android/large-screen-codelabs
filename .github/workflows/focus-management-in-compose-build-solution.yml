@@ -26,8 +26,8 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        working-directory: ./large-screen-codelabs/focus-management-in-compose
+        working-directory: ./focus-management-in-compose
 
       - name: Build solution app
-        working-directory: ./large-screen-codelabs/focus-management-in-compose
+        working-directory: ./focus-management-in-compose
         run: ./gradlew :solution:assembleDebug

@@ -26,8 +26,8 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        working-directory: ./large-screen-codelabs/android-camera-foldables
+        working-directory: ./android-camera-foldables
 
       - name: Build step1 app
-        working-directory: ./large-screen-codelabs/android-camera-foldables
+        working-directory: ./android-camera-foldables
         run: ./gradlew :step1:assembleDebug
