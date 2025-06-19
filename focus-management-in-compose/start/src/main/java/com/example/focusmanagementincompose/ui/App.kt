@@ -18,6 +18,7 @@ package com.example.focusmanagementincompose.ui
 
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.focusGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -51,6 +52,7 @@ fun App(
     Column(modifier = modifier) {
         PrimaryTabRow(
             selectedTabIndex = selectedTabIndex,
+            modifier = Modifier.focusGroup()
         ) {
             Tab.entries.forEachIndexed { index, tab ->
                 val isSelected = selectedTabIndex == index
