@@ -26,12 +26,7 @@ import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
@@ -39,20 +34,24 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.entry
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
 import com.example.focusmanagementincompose.R
 import com.example.focusmanagementincompose.ui.tab.FocusGroupTab
 import com.example.focusmanagementincompose.ui.tab.FocusTargetTab
 import com.example.focusmanagementincompose.ui.tab.FocusTraversalOrderTab
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun App(
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
 
-    var selectedTab by rememberSaveable { mutableStateOf(Tab.FocusTarget) }
-    val selectedTabIndex = Tab.entries.indexOf(selectedTab)
+    val backstack = rememberNavBackStack(Tab.FocusTarget)
+    val selectedTabIndex = Tab.entries.indexOf(backstack.last())
     val focusRequesters = remember {
         List(Tab.entries.size) { FocusRequester() }
     }
@@ -62,43 +61,49 @@ fun App(
             selectedTabIndex = selectedTabIndex,
             modifier = Modifier
                 .focusProperties {
-                    enter = {
-                        focusRequesters[selectedTabIndex]
+                    onEnter = {
+                        focusRequesters[selectedTabIndex].requestFocus()
                     }
                 }
                 .focusGroup()
         ) {
-            Tab.entries.forEachIndexed { index, screen ->
+            Tab.entries.forEachIndexed { index, tab ->
+                val isSelected = selectedTabIndex == index
                 Tab(
-                    selected = screen == selectedTab,
-                    onClick = { selectedTab = screen },
-                    text = { Text(stringResource(screen.title)) },
+                    selected = isSelected,
+                    onClick = {
+                        if (!isSelected) {
+                            backstack.add(tab)
+                        }
+                    },
+                    text = { Text(stringResource(tab.title)) },
                     modifier = Modifier.focusRequester(focusRequester = focusRequesters[index])
                 )
             }
         }
-        when (selectedTab) {
-            Tab.FocusTarget -> {
-                FocusTargetTab(
-                    onClick = context::onCardClicked,
-                    modifier = Modifier.padding(32.dp),
-                )
+        NavDisplay(
+            backStack = backstack,
+            entryProvider = entryProvider {
+                entry<Tab.FocusTarget> {
+                    FocusTargetTab(
+                        onClick = context::onCardClicked,
+                        modifier = Modifier.padding(32.dp),
+                    )
+                }
+                entry<Tab.FocusTraversalOrder> {
+                    FocusTraversalOrderTab(
+                        onClick = context::onCardClicked,
+                        modifier = Modifier.padding(32.dp)
+                    )
+                }
+                entry<Tab.FocusGroup> {
+                    FocusGroupTab(
+                        onClick = context::onCardClicked,
+                        modifier = Modifier.padding(32.dp)
+                    )
+                }
             }
-
-            Tab.FocusTraversalOrder -> {
-                FocusTraversalOrderTab(
-                    onClick = context::onCardClicked,
-                    modifier = Modifier.padding(32.dp)
-                )
-            }
-
-            Tab.FocusGroup -> {
-                FocusGroupTab(
-                    onClick = context::onCardClicked,
-                    modifier = Modifier.padding(32.dp)
-                )
-            }
-        }
+        )
     }
 }
 
