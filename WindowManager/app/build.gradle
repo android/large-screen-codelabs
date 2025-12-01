@@ -23,12 +23,12 @@ plugins {
 
 android {
     namespace "com.example.codelab.windowmanager"
-    compileSdk 33
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.example.codelab.windowmanager"
-        minSdk 21
-        targetSdk 33
+        minSdk 23
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -54,7 +54,7 @@ android {
 }
 
 dependencies {
-    ext.windowmanager_version = "1.1.0"
+    ext.windowmanager_version = "1.5.1"
 
     implementation "androidx.window:window:$windowmanager_version"
     androidTestImplementation "androidx.window:window-testing:$windowmanager_version"
